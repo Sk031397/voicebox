@@ -6,13 +6,13 @@ import logo from "@/app/logo.png"
 
 export const HeroSection = () => {
   return (
-    <section className="flex flex-col-reverse md:flex-row items-center px-6 py-16 md:py-24 bg-blue-50">
+    <section className="flex flex-col-reverse md:flex-row items-center px-6 md:py-24">
       <div className="flex-1 text-center md:text-left md:pr-8">
         <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
             Bringing Learning to Life with AI-Driven Audio
         </h1>
         <p className="text-lg text-gray-600 mb-6">
-
+            
         </p>
         <div className="flex justify-center md:justify-start">
             <Link href={'/'} className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-200">
@@ -24,12 +24,13 @@ export const HeroSection = () => {
         </div>
       </div>
       <div className="flex-1 mb-8 md:mb-0">
+        {/* Something Else*/}
         <Image
         src={logo}
         alt="illustration"
         width={500}
         height={500}
-        className="w-full h-auto rounded-lg shadow-lg"
+        className="w-full h-auto rounded-lg"
         />
       </div>
     </section>

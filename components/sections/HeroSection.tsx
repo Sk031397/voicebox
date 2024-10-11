@@ -6,7 +6,7 @@ import logo from "@/app/logo.png"
 
 export const HeroSection = () => {
   return (
-    <section className="flex flex-col-reverse md:flex-row items-center px-6 md:py-24">
+    <section className="flex flex-col-reverse md:flex-row px-6 md:py-24">
       <div className="flex-1 text-center md:text-left md:pr-8">
         <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
             Bringing Learning to Life with AI-Driven Audio

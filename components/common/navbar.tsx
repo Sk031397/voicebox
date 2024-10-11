@@ -8,21 +8,15 @@ import Image from "next/image";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { CiUser } from "react-icons/ci"
+import { Switch } from "../ui/switch";
+import { useRouter } from "next/navigation";
 export const Navbar = () => {
-  const [header,setHeader] = useState(false);
-  const scrollHeader = () => {
-    if(window.scrollY >= 20){
-      setHeader(true);
-    }else{
-      setHeader(false);
-    }
-}
-  useEffect(() => {
-    window.addEventListener('scroll',scrollHeader);
-    return () => {
-      window.addEventListener('scroll',scrollHeader);
-    }
-  })
+  const router = useRouter();
+  const [isPlayground,setIsPlayground] = useState(false);
+  const handleToggle = () => {
+    setIsPlayground(!isPlayground);
+    router.push(isPlayground ? '/':'/playground');
+  }
   return (
       <header className="flex items-center justify-between p-4 shadow-xl">
         <Link href={'/'}>
@@ -41,9 +35,12 @@ export const Navbar = () => {
           placeholder="Search..."
           className="border border-gray-300 rounded-lg px-3 py-1 focus:outline-none focus:ring-2 focus:ring-yellow-400"/>
         </div>
-        <Button className="cursor-pointer" variant={"outline"}>
-          <CiUser size={20}/>
-        </Button>
+        <span className="text-sm text-gray-300">{isPlayground ? "Playground":""}</span>
+        <Switch
+        checked={isPlayground}
+        onCheckedChange={handleToggle}
+        className="bg-blue-500"
+        />
       </header>
   )
 }

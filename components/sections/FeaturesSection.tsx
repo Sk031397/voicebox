@@ -3,7 +3,7 @@ import { FiHeadphones,FiBookOpen,FiBarChart2 } from 'react-icons/fi';
 
 export const FeaturesSection = () => {
   return (
-    <section className='px-6 py-16 text-center'>
+    <section className='px-6 py-4 text-center'>
       <h2 className='text-3xl font-bold text-gray-800 mb-8'>Features</h2>
       <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
         <FeatureCard icon={<FiHeadphones/>} title='Personalized Narration' description='Adapt narration to suit individual learning styles and needs'/>

@@ -1,5 +1,3 @@
-import { Benefits } from "@/components/sections/Benefits";
-import { Demo } from "@/components/sections/Demo";
 import { FAQ } from "@/components/sections/FAQ";
 import { FeaturesSection } from "@/components/sections/FeaturesSection";
 import { HeroSection } from "@/components/sections/HeroSection";
@@ -12,8 +10,6 @@ export default function Home(){
       <HeroSection/>
       <FeaturesSection/>
       <HowItWorks/>
-      <Benefits/>
-      <Demo/>
       <Pricing/>
       <FAQ/>
     </main>

@@ -1,47 +1,37 @@
-'use client';
+'use client'
+import { NAVLINKS } from '@/constants';
+import Image from 'next/image';
+import Link from 'next/link';
 
-import { NAVLINKS } from "@/constants";
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import logo from "@/app/logo.png"
-import Image from "next/image";
-import { Input } from "../ui/input";
-import { Button } from "../ui/button";
-import { CiUser } from "react-icons/ci"
-import { Switch } from "../ui/switch";
-import { useRouter } from "next/navigation";
-export const Navbar = () => {
-  const router = useRouter();
-  const [isPlayground,setIsPlayground] = useState(false);
-  const handleToggle = () => {
-    setIsPlayground(!isPlayground);
-    router.push(isPlayground ? '/':'/playground');
-  }
+export default function Navbar() {
   return (
-      <header className="flex items-center justify-between p-4 shadow-xl">
-        <Link href={'/'}>
-          <Image src={logo} alt="logo" width={50} height={50}/>
-        </Link>
-        <nav className="flex items-center gap-8">
-          {NAVLINKS.map(link => (
-            <Link href={link.href} key={link.id} className="text-xl no-underline">
+    <nav className="bg-white shadow fixed w-full z-10">
+      <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+        <div className="text-blue-800 font-bold text-2xl">
+          <Link href="/">
+            <Image
+            src={'/images/logo.png'}
+            alt='logo'
+            width={50}
+            height={50}
+            />
+          </Link>
+        </div>
+        <div className="hidden md:flex space-x-4">
+          {NAVLINKS.map((link,idx) => (
+            <Link href={link.href} className="text-gray-600 hover:text-teal-500 transition duration-300">
               {link.name}
             </Link>
           ))}
-        </nav>
-        <div className="relative">
-          <Input
-          type="text"
-          placeholder="Search..."
-          className="border border-gray-300 rounded-lg px-3 py-1 focus:outline-none focus:ring-2 focus:ring-yellow-400"/>
         </div>
-        <span className="text-sm text-gray-300">{isPlayground ? "Playground":""}</span>
-        <Switch
-        checked={isPlayground}
-        onCheckedChange={handleToggle}
-        className="bg-blue-500"
-        />
-      </header>
-  )
+        <div>
+          <Link href="/signup">
+          <button className="px-4 py-2 text-black font-semibold rounded-lg border-2 border-green-800 hover:bg-green-600 transition duration-300">
+            Sign Up
+          </button>
+          </Link>
+        </div>
+      </div>
+    </nav>
+  );
 }
-

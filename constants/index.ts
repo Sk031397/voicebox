@@ -2,16 +2,21 @@ export const NAVLINKS = [
     {
         id:0,
         name:'Home',
-        href:'/'
+        href:'#home'
     },
     {
         id:1,
-        name:'Explore',
-        href:'/explore'
+        name:'Features',
+        href:'#features'
     },
     {
         id:2,
-        name:'Settings',
-        href:'/settings'
+        name:'Works',
+        href:'#works'
+    },
+    {
+        id:3,
+        name:'Pricing',
+        href:'#pricing'
     }
 ]

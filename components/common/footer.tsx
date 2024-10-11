@@ -1,18 +1,39 @@
 'use client';
+import Link from 'next/link';
+import { CiFacebook, CiTwitter, CiInstagram, CiLinkedin } from 'react-icons/ci';
 
-export const Footer = () => {
+export default function Footer() {
   return (
-    <footer className="px-6 py-8 text-center">
-      <p className="mb-4">&copy; {new Date().getFullYear()} Voicebox. All rights reserved.</p>
-      <div className="flex justify-center space-x-6">
-        <a href="/privacy-policy" className="hover:underline">Privacy Policy</a>
-        <a href="/terms-of-service" className="hover:underline">Terms of Service</a>
-        <a href="https://twitter.com/Voicebox" target="_blank" rel="noopener noreferrer" className="hover:underline">
-          Twitter
-        </a>
+    <footer className="py-10">
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="flex flex-col md:flex-row justify-between items-center">
+          <div className="mb-6 md:mb-0">
+            <h4 className="text-lg font-bold">Voicebox</h4>
+            <p className="text-gray-300">
+              Transforming education through audio innovation.
+            </p>
+          </div>
+          <div className="flex space-x-4 mb-6 md:mb-0">
+            <Link href="#" className="text-gray-300 hover:text-white transition duration-300">
+              <CiFacebook className="h-6 w-6" />
+            </Link>
+            <Link href="#" className="text-gray-300 hover:text-white transition duration-300">
+              <CiTwitter className="h-6 w-6" />
+            </Link>
+            <Link href="#" className="text-gray-300 hover:text-white transition duration-300">
+              <CiInstagram className="h-6 w-6" />
+            </Link>
+            <Link href="#" className="text-gray-300 hover:text-white transition duration-300">
+              <CiLinkedin className="h-6 w-6" />
+            </Link>
+          </div>
+          <div>
+            <p className="text-gray-300 text-sm">
+              &copy; {new Date().getFullYear()} Voicebox. All rights reserved.
+            </p>
+          </div>
+        </div>
       </div>
     </footer>
-  )
+  );
 }
-
-

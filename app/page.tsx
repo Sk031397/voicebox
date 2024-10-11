@@ -1,8 +1,8 @@
-import { FAQ } from "@/components/sections/FAQ";
-import { FeaturesSection } from "@/components/sections/FeaturesSection";
-import { HeroSection } from "@/components/sections/HeroSection";
-import { HowItWorks } from "@/components/sections/HowItWorks";
-import { Pricing } from "@/components/sections/Pricing";
+import FeaturesSection from "@/components/sections/FeaturesSection";
+import HeroSection from "@/components/sections/HeroSection";
+import HowItWorks from "@/components/sections/HowItWorks";
+import Pricing from "@/components/sections/Pricing";
+
 
 export default function Home(){
   return (
@@ -11,7 +11,6 @@ export default function Home(){
       <FeaturesSection/>
       <HowItWorks/>
       <Pricing/>
-      <FAQ/>
     </main>
   )
 }

@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ReactNode } from "react";
-import { Footer, Navbar } from "@/components/common";
+import Navbar from "@/components/common/navbar";
 import { ThemeProvider } from "@/providers";
+import Footer from "@/components/common/footer";
 
 
 export const metadata: Metadata = {
@@ -20,9 +21,9 @@ export default function RootLayout({children,}: Readonly<{children: ReactNode;}>
         enableSystem
         disableTransitionOnChange
         >
-        <Navbar/>
-        {children}
-        <Footer/>
+          <Navbar/>
+          {children}
+          <Footer/>
         </ThemeProvider>
       </body>
     </html>

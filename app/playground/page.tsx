@@ -1,5 +1,4 @@
-import { Experience } from "@/components/playground/Experience";
-
+import Experience from "@/components/playground/Experience";
 
 export default function PlaygroundPage(){
     return (

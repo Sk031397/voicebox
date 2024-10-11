@@ -4,14 +4,49 @@ import { CameraControls, Environment, Float,Gltf, Html, Loader, useGLTF } from "
 import { Character } from "./Character";
 import { Leva, useControls, button } from "leva";
 import { degToRad } from "three/src/math/MathUtils.js";
-import { Suspense, useEffect, useRef } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { BoardSettings } from "./BoardSettings";
 import { TypingBox } from "./TypingBox";
-export const Experience = () => {
+import { elevenlabs } from "@/lib/elevenlabs";
+import { Voice } from "elevenlabs/api";
+import { useAICharacter } from "@/hooks/useAICharacter";
+
+export default function Experience(){
+    const itemPlacement = {
+        default: {
+          classroom: {
+            position: [0.2, -1.7, -2],
+          },
+          teacher: {
+            position: [-1, -1.7, -3],
+          },
+          board: {
+            position: [0.45, 0.382, -6],
+          },
+        },
+        alternative: {
+          classroom: {
+            position: [0.3, -1.7, -1.5],
+            rotation: [0, degToRad(-90), 0],
+            scale: 0.4,
+          },
+          teacher: { position: [-1, -1.7, -3] },
+          board: { position: [1.4, 0.84, -8] },
+        },
+      };
+      const teacher = useAICharacter((state) => state.character);
+      const classroom = useAICharacter((state) => state.classroom);
+    const [voices, setVoices] = useState<Voice[]>([]);
+    useEffect(() => {
+        // Fetch voices asynchronously and set them in state
+        elevenlabs.voices.getAll().then((response) => {
+            setVoices(response.voices as Voice[]);
+        }).catch(error => console.error("Error fetching voices:", error));
+    }, []);
     return (
         <>
             <div className="z-10 md:justify-center fixed bottom-4 left-4 right-4 flex gap-3 flex-wrap justify-stretch">
-                <TypingBox/>
+                <TypingBox voices={voices}/>
             </div>
             <Leva hidden/>
             <Loader/>
@@ -37,6 +72,20 @@ export const Experience = () => {
         </>
     )
 }
+const CAMERA_POSITIONS = {
+    default: [0, 6.123233995736766e-21, 0.0001],
+    loading: [
+      0.00002621880610890309, 0.00000515037441056466, 0.00009636414192870058,
+    ],
+    speaking: [0, -1.6481333940859815e-7, 0.00009999846226827279],
+  };
+  
+  const CAMERA_ZOOMS = {
+    default: 1,
+    loading: 1.3,
+    speaking: 2.1204819420055387,
+  };
+  
 const CameraManager = () => {
     return (
         <CameraControls

@@ -20,6 +20,7 @@ interface AICharacterStore {
   classroom: string;
   setClassroom: (classroom: string) => void;
   loading: boolean;
+  setIsLoading: (isLoading: boolean) => void; 
 }
 
 export const useAICharacter = create<AICharacterStore>((set, get) => ({
@@ -40,4 +41,7 @@ export const useAICharacter = create<AICharacterStore>((set, get) => ({
     set(() => ({ classroom }));
   },
   loading: false,
+  setIsLoading:(isLoading) => {
+    set(() => ({ loading: isLoading }))
+  }
 }));
